@@ -1,0 +1,19 @@
+import Cocoa
+
+
+print ("hi")
+
+var A : Double = 1000 // размер
+var B = 5 // сколько лет
+let C : Double = 10.0 // процент
+var D = 1
+
+while D <= B {
+    
+   A = A + ( A * C/100 )
+    
+   D = D + 1
+}
+
+
+print ("Сумма вклада через",  B , "лет равна" , A)
