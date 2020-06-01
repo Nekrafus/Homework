@@ -1,0 +1,40 @@
+import Foundation
+
+
+var u = "a*xˆ2 + b*x + c = 0"
+
+let a  : Double = 3
+let b  : Double = 3
+let c  : Double = 10
+
+
+var check = (b * b) - (4 * a * c)
+
+if check<0
+{
+    
+    print("Нет корней. Дискриминант меньше 0")
+    
+}
+
+var disc = sqrt((b * b) - (4 * a * c))
+
+if disc == 0
+{
+    
+    let m = (b*(-1))/((2)*(a))
+    print("корень" , (m))
+}
+    
+    
+else if disc > 0
+
+{
+    
+    let m = (b*(-1) - disc)/(2*(a))
+    
+    let n = ((b)*(-1) + disc)/((2)*(a))
+    
+    print("У уравнения 2 корня", (m), "и" , (n))
+}
+
