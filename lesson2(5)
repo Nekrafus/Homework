@@ -1,0 +1,29 @@
+import Cocoa
+
+
+var array :[Double] = [1,2,3]
+
+func fib (array:[Double], max:Int) -> [Double]
+
+{
+   var newar = array
+    
+    if array.count <= 100
+    
+    {
+        newar.append(array[array.count-1] + array[array.count-2])
+    }
+    
+    else
+    {
+      return newar
+    }
+    
+    
+    return fib (array:newar,max:max)
+
+}
+
+let a = fib ( array:array, max:100)
+    
+print (a)
