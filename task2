@@ -1,0 +1,19 @@
+import Cocoa
+
+
+
+
+let A = 3 // катет 1
+let B = -4 // катет 2
+
+if A < 0 || B < 0 {print("Ошибка")
+}
+else{
+    let S = (Double)(A * B) / 2.0
+    let C = sqrt((Double)(A * A) + (Double)(B * B))
+    let P = (Double)(B + A) + C
+
+    print("Площадь треугольника равна", (S), "периметр треугольника равен" , (P) ,"длина гипотенузы треугольника равна" ,(C))
+
+}
+
