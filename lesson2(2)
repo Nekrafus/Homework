@@ -1,0 +1,19 @@
+import Cocoa
+
+
+func delenie (a: Int) {
+
+
+if a % 3 == 0
+{
+    print("Делится")
+}
+
+else
+{
+    print("Не делится")
+}
+
+}
+
+delenie(a:12)

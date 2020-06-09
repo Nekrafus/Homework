@@ -1,0 +1,21 @@
+import Cocoa
+
+
+func chetnost (a: Int)
+
+{
+    
+if a % 2 == 0
+
+{
+    print("четное")
+}
+else
+{
+    print("не четное")
+}
+
+}
+
+
+chetnost(a:20)

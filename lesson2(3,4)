@@ -1,0 +1,16 @@
+import Cocoa
+var mass : [Int] = []
+var n = 100
+for i in 0...n {
+mass.append(i)
+}
+print(mass)
+for (_, value) in mass.enumerated()
+{
+if value % 2 == 0 || value % 3 != 0
+{
+
+    mass.remove(at: mass.firstIndex(of : value)!)
+}
+}
+print(mass)
