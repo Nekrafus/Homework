@@ -1,0 +1,132 @@
+import UIKit
+
+enum Mark : String
+    
+    
+   {
+       case mersedes = "Mersedes"
+       case bmw = "BMW"
+       case audi = "Audi"
+   }
+   
+
+struct Lightcar
+
+{
+   
+    
+    
+    
+    var mark : Mark
+    var year: Int
+    var baggagevolume: Int
+    var engine: Int
+    
+    
+    
+ 
+    
+    func enginework (on: Bool)
+    
+        {
+            print("Двигатель \(on ? "включен" : "выключен")")
+        }
+    
+    
+    func windowsplace (on:Bool)
+    
+        {
+            print("Окна \(on ? "закрыты" : "открыты")")
+        }
+    
+    
+    func inbody (vol: Int)
+        
+        {
+            if vol < baggagevolume
+            {
+                print ( "В багажнике груз обьемом ",(vol), ". Осталось места ", (baggagevolume-vol))
+            }
+            else
+            {
+                print ( "Не влез")
+            }
+        }
+}
+
+
+struct heavycar
+    
+{
+    let mark : Mark
+    let year: Int
+    let bodyvolume: Int
+    var engine: Int
+    
+
+    
+    
+        func enginework (on: Bool)
+        
+            {
+                print("Двигатель \(on ? "включен" : "выключен")")
+            }
+        
+        
+        func windowsplace (on:Bool)
+        
+            {
+                print("Окна \(on ? "закрыты" : "открыты")")
+            }
+        
+        
+        func inbody (vol: Int)
+            
+            {
+                if vol < bodyvolume
+                {
+                    print ( "В багажнике груз обьемом ",(vol), ". Осталось места ", (bodyvolume-vol))
+                }
+                else
+                {
+                    print ( "Не влез")
+                }
+            }
+}
+
+
+
+print("Машина 1")
+var car1 = Lightcar (mark: .mersedes , year: 2010, baggagevolume: 300, engine: 350 )
+
+print (car1)
+
+car1.enginework(on: true)
+
+car1.windowsplace(on: false)
+
+car1.inbody(vol: 100)
+
+print("Машина 2")
+
+var car2 = Lightcar (mark: Mark.bmw, year: 2015, baggagevolume: 200, engine: 150)
+
+print(car2)
+
+car2.enginework(on: false)
+
+car2.windowsplace(on: true)
+
+car2.inbody(vol: 400)
+
+print("Машина 3")
+
+var car3 = heavycar(mark: .bmw , year: 2015, bodyvolume: 1000, engine: 600)
+
+print(car3)
+
+car3.enginework(on: true)
+
+car3.windowsplace(on: true)
+
+car3.inbody(vol: 1100)
