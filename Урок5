@@ -1,0 +1,232 @@
+import Cocoa
+
+enum Color : String
+ 
+ 
+{
+    case red = "red"
+    case black = "black"
+    case green = "green"
+}
+
+    
+
+
+
+enum Manufacturer : String
+ 
+ 
+{
+    case mersedes = "Mersedes"
+    case bmw = "BMW"
+    case audi = "Audi"
+}
+
+
+
+protocol Car
+    
+    {
+    
+    var manufacturer: Manufacturer {get set}
+    var color: Color {get set}
+    var year: Int {get set}
+    
+    
+    func engineState (on:Bool)
+    
+    }
+
+extension Car
+    
+{
+    
+    
+    func windowStage (on: Bool)
+    {
+        if on == true
+        
+        {
+            
+            print("Стекла подняты")
+            
+        }
+            
+        else
+            
+        {
+            
+            print ("Стекла открыты")
+        }
+    }
+}
+
+
+
+
+
+class TrunkCar : Car
+
+{
+    
+    var manufacturer: Manufacturer
+    
+    var color: Color
+    
+    var year: Int = 0
+    
+    var trailer : Bool
+    
+    
+    func engineState(on:Bool)
+    {
+            
+            if on == true
+            
+            {
+                
+                print("Двигатель включен")
+                
+            }
+                
+            else
+                
+            {
+                
+                print ("Двигатель выключен")
+                
+            }
+    }
+
+    init (manufacturer : Manufacturer ,  color : Color ,  year : Int , trailer : Bool)
+       
+    {
+       
+        self.trailer = trailer
+        self.color = color
+        self.manufacturer = manufacturer
+        self.year = year
+       
+        
+    }
+    
+}
+    
+    
+extension TrunkCar: CustomStringConvertible
+
+{
+    var description: String
+    
+    {
+        return "Сделан грузовик"
+    }
+}
+
+
+
+class SportCar : Car
+
+{
+    
+    func engineState(on:Bool)
+        
+    {
+            
+            if on == true
+            
+            {
+                
+                print("Двигатель включен")
+                
+            }
+                
+            else
+                
+            {
+                
+                print ("Двигатель выключен")
+                
+            }
+    }
+    
+    
+    var spoiler : Bool
+    var manufacturer: Manufacturer
+    var color: Color
+    var year: Int
+    
+    
+  
+    
+     init (manufacturer : Manufacturer ,  color : Color ,  year : Int , spoiler : Bool)
+        
+     {
+        
+        self.spoiler = spoiler
+        self.color = color
+        self.manufacturer = manufacturer
+        self.year = year
+        
+     }
+    
+}
+
+extension SportCar: CustomStringConvertible
+
+{
+    var description: String
+    
+    {
+        return "Сделан спорткар"
+    }
+}
+
+
+
+
+print("Машина 1")
+
+var car1 = SportCar(manufacturer: .audi, color: .black, year: 1996, spoiler: true)
+
+print ("Спойлер",car1.spoiler)
+print ("Производитель", car1.manufacturer)
+print ("Цвет", car1.color)
+print ("Год выпуска", car1.year)
+car1.engineState(on:true)
+car1.windowStage(on: true)
+
+print (car1.description)
+
+
+
+
+print("Машина 2")
+
+var car2 = SportCar(manufacturer: .bmw, color: .red, year: 2020, spoiler: false)
+
+print ("Спойлер", car2.spoiler)
+print ("Производитель", car2.manufacturer)
+print ("Цвет", car2.color)
+print ("Год выпуска", car2.year)
+
+car2.engineState(on:false)
+car1.windowStage(on: false)
+
+print (car2.description)
+
+
+
+print("Машина 3")
+
+var car3 = TrunkCar(manufacturer: .mersedes, color: .green, year: 2010, trailer: true)
+
+print ("Прицеп" ,car3.trailer)
+print ("Производитель", car3.manufacturer)
+print ("Цвет", car3.color)
+print ("Год выпуска " ,car3.year)
+
+car3.engineState(on: true)
+car1.windowStage(on: false)
+
+print (car3.description)
