@@ -1,0 +1,194 @@
+import UIKit
+
+enum Color : String
+ 
+ 
+{
+    case red = "red"
+    case black = "black"
+    case green = "green"
+}
+
+    
+
+
+
+enum Manufacturer : String
+ 
+ 
+{
+    case mersedes = "Mersedes"
+    case bmw = "BMW"
+    case audi = "Audi"
+}
+
+
+
+
+class Car
+    
+    {
+    
+    let manufacturer : Manufacturer
+    var color : Color
+    var year : Int
+    
+    
+    
+    func enginestate (on:Bool)
+    {
+        
+        if on == true
+        
+        {
+            
+            print("Двигатель включен")
+            
+        }
+            
+        else
+            
+        {
+            
+            print ("Двигатель выключен")
+            
+            
+            
+        }
+        
+        
+    }
+    
+    
+    func sportmode (on:Bool)
+        
+    {
+        
+        if on == true
+            
+        {
+            print("sportmode vkluchen")
+            
+        }
+            
+     else
+            
+        {
+            print("sportmode vikluchen")
+            
+        }
+            
+    }
+        
+    
+    
+    
+    init (manufacturer : Manufacturer , color : Color , year : Int)
+    
+    {
+        self.color = color
+        self.manufacturer = manufacturer
+        self.year = year
+    
+    
+    
+    }
+
+}
+
+
+
+
+class TrunkCar : Car
+
+{
+    var trailer : Bool
+    
+    init (manufacturer : Manufacturer ,  color : Color ,  year : Int , trailer : Bool)
+        
+    {
+       
+       self.trailer = trailer
+       
+       super.init (manufacturer : manufacturer , color : color , year : year)
+    }
+    
+    
+}
+    
+    
+    
+
+
+
+class SportCar : Car
+
+{
+    var spoiler : Bool
+     
+    override func sportmode (on: Bool)
+         
+     {
+         
+         
+         if on == false
+             
+         {
+             
+             print("Режим супер спорт выключен")
+             
+         }
+      else
+         {
+             print("Режим супер спорт выключен")
+            
+         }
+             
+     }
+    
+  
+    
+     init (manufacturer : Manufacturer ,  color : Color ,  year : Int , spoiler : Bool)
+     {
+        
+        self.spoiler = spoiler
+        
+        super.init (manufacturer : manufacturer , color : color , year : year)
+         
+     }
+    
+}
+
+print("Машина 1")
+
+var car1 = SportCar(manufacturer: .audi, color: .black, year: 1996, spoiler: true)
+
+print ("Спойлер",car1.spoiler)
+print ("Производитель", car1.manufacturer)
+print ("Цвет", car1.color)
+print ("Год выпуска", car1.year)
+car1.enginestate(on:true)
+
+car1.sportmode(on:false)
+
+
+print("Машина 2")
+var car2 = SportCar(manufacturer: .bmw, color: .red, year: 2020, spoiler: false)
+
+print ("Спойлер", car2.spoiler)
+print ("Производитель", car2.manufacturer)
+print ("Цвет", car2.color)
+print ("Год выпуска", car2.year)
+
+car2.enginestate(on:false)
+car2.sportmode(on:true)
+
+print("Машина 3")
+
+var car3 = TrunkCar(manufacturer: .mersedes, color: .green, year: 2010, trailer: true)
+
+print ("Прицеп" ,car3.trailer)
+print ("Производитель", car3.manufacturer)
+print ("Цвет", car3.color)
+print ("Год выпуска " ,car3.year)
+
