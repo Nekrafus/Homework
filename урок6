@@ -1,0 +1,75 @@
+import UIKit
+
+var str = "Hello, playground"
+
+struct Queue <T>
+    
+{
+    private var elements: [T] = []
+    
+    mutating func enqueue (_ element: T)
+        
+    {
+        elements.append(element)
+    }
+    mutating func dequeue() -> T?
+    {
+        guard elements.count != 0 else {return nil}
+        return elements.removeFirst()
+    }
+   
+    func filter(_ predicate: (Int)-> Bool) -> [T]
+        
+    {
+        var newArray = [T]()
+        
+        for (index , value) in elements.enumerated()
+            
+        {
+            if predicate(index){
+                newArray.append(value)
+            }
+        }
+        return newArray
+    }
+    
+    subscript (index : Int ) -> T?
+        
+    {
+        
+        guard index < self.elements.count else {return nil}
+        return elements[index]
+ 
+    }
+    
+    
+}
+
+
+var stack = Queue<Int>()
+
+
+stack.enqueue(1)
+stack.enqueue(2)
+stack.enqueue(3)
+stack.enqueue(4)
+stack.dequeue()
+print(stack)
+stack.dequeue()
+stack.enqueue(5)
+print(stack)
+stack.enqueue(10)
+stack.enqueue(12)
+stack.enqueue(33)
+stack.enqueue(40)
+print(stack)
+
+print(stack.filter{$0 % 3 == 0})
+print(stack.filter{$0 % 2 == 0})
+
+
+print(stack[2])
+print(stack[10])
+print(stack[8])
+print(stack[4])
+print(stack[1])
