@@ -1,0 +1,89 @@
+import UIKit
+
+
+struct Mark {
+    let name: String
+}
+
+struct Car
+{
+    var count: Int
+    var cardcolor: String
+    var mark: Mark
+}
+
+enum GarageError: Error
+{
+    case invalidCar
+    case notinGarage
+    case wrongCard
+}
+
+
+class Garage
+    
+{
+    private var parking =
+    [
+        "BMW" : Car(count: 0, cardcolor: "red" , mark: Mark(name: "bmw")),
+        "AUDI": Car(count: 2, cardcolor: "blue" , mark: Mark(name: "audi")),
+        "MERSEDES": Car(count: 3, cardcolor: "black", mark: Mark(name: "mersedes"))
+    ]
+    
+    var cardInsert = ""
+    
+    
+    func getCar (carNamed name: String) throws -> Mark
+    {
+        guard let item = parking[name] else {
+            throw GarageError.invalidCar
+        }
+        guard item.count > 0 else {
+            throw GarageError.notinGarage
+        }
+        
+        guard item.cardcolor == cardInsert else {
+            throw GarageError.wrongCard
+        }
+        
+        
+        var newItem = item
+        newItem.count -= 1
+        parking[name] = newItem
+        
+        print("Выезжает \(name) ")
+        return newItem.mark
+        
+        
+    }
+    
+    
+}
+
+var garage = Garage()
+
+
+
+do
+    {
+        garage.cardInsert = "red"
+        try garage.getCar(carNamed: "BMW")
+    }
+    
+catch GarageError.invalidCar
+{
+    print("Такой машины нет")
+}
+catch GarageError.notinGarage
+{
+    print("Нет в гараже")
+}
+catch GarageError.wrongCard
+{
+    print("Не верная карта")
+}
+    
+catch let error
+    {
+        print(error.localizedDescription)
+    }
