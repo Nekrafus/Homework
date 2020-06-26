@@ -1,0 +1,81 @@
+import UIKit
+
+
+struct Mark {
+    let name: String
+}
+
+struct Car
+{
+    var count: Int
+    var cardcolor: String
+    var mark: Mark
+}
+
+enum GarageError: Error
+{
+    case invalidCar
+    case notinGarage
+    case wrongCard
+}
+
+
+class Garage
+    
+{
+    private var parking =
+    [
+        "BMW" : Car(count: 1, cardcolor: "red" , mark: Mark(name: "bmw")),
+        "AUDI": Car(count: 2, cardcolor: "blue" , mark: Mark(name: "audi")),
+        "MERSEDES": Car(count: 3, cardcolor: "black", mark: Mark(name: "mersedes"))
+    ]
+    
+    var cardInsert = ""
+    
+    
+    func getCar (carNamed name: String) -> (Mark?, Error?)
+    {
+        guard let item = parking[name] else {
+            return (nil, GarageError.invalidCar)
+        }
+        guard item.count > 0 else {
+            return (nil, GarageError.notinGarage)
+        }
+        
+        guard item.cardcolor == cardInsert else {
+            return (nil,GarageError.wrongCard)
+        }
+        
+        
+        var newItem = item
+        newItem.count -= 1
+        parking[name] = newItem
+        
+        print("Выезжает \(name) ")
+        return (newItem.mark, nil)
+        
+        
+    }
+    
+    
+}
+
+var garage = Garage()
+
+garage.cardInsert = "red"
+
+let (result, error) = garage.getCar(carNamed: "BMW")
+
+if let error = error
+{
+    switch  error {
+    case GarageError.invalidCar:
+        print("Нет такой машины")
+    case GarageError.notinGarage:
+        print("Нет в гараже")
+    case GarageError.wrongCard:
+        print("Не та карта")
+    default:
+        print("N/A")
+    }
+}
